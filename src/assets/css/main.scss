@@ -1,0 +1,74 @@
+@import 'variables.scss';
+html {
+  background: map-get($colors, body);
+  color: map-get($colors, text); // font-family: 'Montserrat', sans-serif;
+  font-family: 'Actor', sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*:focus {
+  outline: none !important;
+  outline-color: transparent !important;
+  outline-style: none !important;
+}
+
+body {
+  background: map-get($colors, body);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'GFS Didot', serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: map-get($colors, links);
+  text-decoration: none;
+}
+
+a:hover {
+  color: map-get($colors, hover);
+  text-decoration: none;
+}

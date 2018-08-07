@@ -1,0 +1,36 @@
+<template>
+  <div class="recipe__title">
+    <h1>{{ title }}</h1>
+    <h3>{{ subtitle }}</h3>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    title: String,
+    subtitle: String
+  }
+}
+</script>
+
+<style lang="scss">
+@import '~/assets/css/_variables.scss';
+
+.recipe__title {
+  position: absolute;
+  width: 100%;
+  bottom: 10%;
+  color: #fff;
+
+  > * {
+    padding: 0px 30px;
+  }
+
+  h1 {
+    font-size: 64px;
+    line-height: 1.05em;
+    // margin-bottom: -0.25em;
+  }
+}
+</style>
