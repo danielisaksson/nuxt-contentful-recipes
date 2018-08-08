@@ -1,4 +1,5 @@
 require('dotenv').config()
+const contentful = require('contentful')
 
 module.exports = {
   srcDir: 'src/',
@@ -55,6 +56,25 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    }
+  },
+  generate: {
+    routes: function() {
+      const client = contentful.createClient({
+        space: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      })
+
+      return client
+        .getEntries({
+          content_type: 'recipe',
+          select: 'fields'
+        })
+        .then(result => {
+          return result.items.map(({ fields }) => {
+            return `/${fields.slug}`
+          })
+        })
     }
   }
 }
