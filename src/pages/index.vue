@@ -36,8 +36,8 @@ import { mapState } from 'vuex'
 import { createFromAlgoliaCredentials } from 'vue-instantsearch'
 
 const searchStore = createFromAlgoliaCredentials(
-  '3TAQTFCIGE',
-  '4bedaddfcce0f2ffe62e7c341baa4b72'
+  process.env.ALGOLIA_APP,
+  process.env.ALGOLIA_SEARCH_KEY
 )
 
 export default {

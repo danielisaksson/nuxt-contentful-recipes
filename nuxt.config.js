@@ -1,4 +1,5 @@
 require('dotenv').config()
+console.log(process.env)
 const contentful = require('contentful')
 
 module.exports = {
@@ -76,5 +77,11 @@ module.exports = {
           })
         })
     }
+  },
+  env: {
+    ALGOLIA_APP: process.env.ALGOLIA_APP,
+    ALGOLIA_SEARCH_KEY: process.env.ALGOLIA_SEARCH_KEY,
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN
   }
 }
