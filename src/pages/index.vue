@@ -14,8 +14,7 @@
       :search-store="searchStore"
       index-name="recipes"
     >
-      <ais-search-box></ais-search-box>
-      <ais-clear></ais-clear>
+      <ais-input placeholder="search recipes"></ais-input>
       <ais-results v-show="searchStore.query.length > 0">
         <template slot-scope="{ result }">
           <h2>
@@ -54,4 +53,15 @@ export default {
 </script>
 
 <style>
+.title {
+  margin: 20px;
+}
+input {
+  font-size: 18px;
+  background-color: whitesmoke;
+  border-radius: 2rem;
+  text-align: center;
+  margin: 20px;
+  padding: 6px;
+}
 </style>
