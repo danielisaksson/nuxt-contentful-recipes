@@ -15,14 +15,15 @@ const createStore = () => {
     },
     actions: {
       async nuxtServerInit({ state }) {
-        console.log('Hello from nuxtServerInit!')
         await client
           .getEntries({
             content_type: 'recipe',
             select: 'fields'
           })
           .then(result => {
-            state['recipes'] = result.items.map(({ fields }) => fields)
+            state['recipes'] = result.items.map(({ sys, fields }) => {
+              return { id: sys.id, ...fields }
+            })
             // console.log('state.recipes is ', state.recipes)
           })
       }
