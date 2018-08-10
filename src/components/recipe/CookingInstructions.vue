@@ -1,5 +1,7 @@
 <template>
-  <div class="recipe__cooking-instructions" v-html="$md.render(instructions)">
+  <div class="recipe__cooking-instructions">
+    <h2>Instruktioner</h2>
+    <div v-html="$md.render(instructions)"></div>
   </div>
 </template>
 

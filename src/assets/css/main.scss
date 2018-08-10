@@ -2,7 +2,7 @@
 html {
   background: map-get($colors, body);
   color: map-get($colors, text); // font-family: 'Montserrat', sans-serif;
-  font-family: 'Actor', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; // font-family: 'Actor', sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   text-size-adjust: 100%;
@@ -49,12 +49,31 @@ p {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'GFS Didot', serif;
+h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  margin: 0.5rem 0 0.75rem 0;
+}
+
+p {
+  font-size: 0.875rem;
 }
 
 ul {
@@ -71,4 +90,17 @@ a {
 a:hover {
   color: map-get($colors, hover);
   text-decoration: none;
+}
+
+//$mq-breakpoints
+@media screen and (max-width: map-get($mq-breakpoints, large)) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: map-get($mq-breakpoints, small)) {
+  h1 {
+    font-size: 1.6rem;
+  }
 }

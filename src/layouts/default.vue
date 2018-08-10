@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrapper">
     <header class="app-header">
-      <app-navigation/>
+      <app-header></app-header>
     </header>
     <main class="app-body">
       <nuxt/>
@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import AppNavigation from '~/components/AppNavigation'
+import AppHeader from '~/components/AppHeader'
 import AppFooter from '~/components/AppFooter'
 
 export default {
   components: {
-    AppNavigation,
+    AppHeader,
     AppFooter
   }
 }
@@ -37,15 +37,17 @@ export default {
 }
 
 .app-header {
-  position: absolute;
+  position: sticky;
+  top: 0px;
   width: 100%;
+  z-index: 1000;
 }
 
 .app-body {
-  padding-top: map-get($sizes, headerHeight);
-  padding-bottom: map-get($sizes, bottomPadding);
-  min-height: calc(100vh - 80px);
-  z-index: 100;
+  min-height: calc(100vh - 146px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*

@@ -20,17 +20,16 @@ export default {
 .recipe__title {
   position: absolute;
   width: 100%;
-  bottom: 10%;
+  bottom: 5%;
   color: #fff;
+  overflow: hidden;
 
   > * {
     padding: 0px 30px;
   }
 
   h1 {
-    font-size: 64px;
     line-height: 1.05em;
-    // margin-bottom: -0.25em;
   }
 }
 </style>

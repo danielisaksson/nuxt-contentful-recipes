@@ -22,11 +22,11 @@ export default {
   li {
     font-size: 0.85em;
     color: map-get($colors, lightText);
-    padding: 0.15em 0;
+    margin: 0.25rem 0;
   }
 
   ul {
-    padding-bottom: 20px;
+    margin-bottom: 1.6rem;
   }
 
   @media screen and (max-width: 558px) {

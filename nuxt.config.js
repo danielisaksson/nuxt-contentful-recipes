@@ -1,5 +1,4 @@
 require('dotenv').config()
-console.log(process.env)
 const contentful = require('contentful')
 
 module.exports = {
@@ -28,8 +27,10 @@ module.exports = {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://fonts.googleapis.com/css?family=Actor|GFS+Didot'
+        href: 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700'
         // 'https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display'
+        // Playfair+Display:400,700
+        // Actor|GFS+Didot
       }
     ]
   },
@@ -45,6 +46,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    // analyze: true,
     /*
     ** Run ESLint on save
     */
