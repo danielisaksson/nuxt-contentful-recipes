@@ -12,3 +12,6 @@ dist
 
 # API Keys
 .env
+
+# PWA module Service workers
+sw.*

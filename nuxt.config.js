@@ -34,7 +34,7 @@ module.exports = {
       }
     ]
   },
-  modules: ['@nuxtjs/markdownit'],
+  modules: ['@nuxtjs/markdownit', '@nuxtjs/pwa'],
   markdownit: {
     injected: true
   },
