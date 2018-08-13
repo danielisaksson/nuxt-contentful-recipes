@@ -1,7 +1,8 @@
 <template>
   <div class="recipe-thumbnail_wrapper" >
-    <nuxt-link :to="recipe.slug">
-      <div class="recipe-thumbnail_image_wrapper" :style="{ 'background-image': `url(${ recipeImageUrl })`}">
+    <nuxt-link :to="recipe.slug" class="recipe-thumbnail_link">
+      <div class="recipe-thumbnail_image_wrapper">
+        <div class="recipe-thumbnail_image" :style="{ 'background-image': `url(${ recipeImageUrl })`}" />
       </div>
 
       <h3>{{ recipe.recipeName }}</h3>
@@ -47,11 +48,30 @@ export default {
 
   .recipe-thumbnail_image_wrapper {
     border-radius: 8px;
-    background-position: 50% 50%;
-    background-size: cover;
     width: 256px;
     height: 256px;
     overflow: hidden;
+    background-color: #760086;
+  }
+  .recipe-thumbnail_image {
+    background-position: 50% 50%;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+  }
+
+  :hover,
+  :focus {
+    .recipe-thumbnail_image {
+      transform: scale(1.05);
+      opacity: 0.75;
+    }
   }
 }
+
+// .recipe-thumbnail_wrapper:hover .recipe-thumbnail_image_wrapper,
+// .recipe-thumbnail_wrapper:focus .recipe-thumbnail_image_wrapper {
+
+// }
 </style>
