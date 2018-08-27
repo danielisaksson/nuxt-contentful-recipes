@@ -12,11 +12,13 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "algolia": "node serverfunctions/algoliasync.js"
+    "algolia": "node serverfunctions/algoliasync.js",
+    "deploy": "npm run generate & npm run algolia"
   },
   "dependencies": {
     "@nuxtjs/markdownit": "^1.2.1",
     "@nuxtjs/pwa": "^2.0.8",
+    "@nuxtjs/sitemap": "^0.1.1",
     "contentful": "^6.1.3",
     "dotenv": "^6.0.0",
     "nuxt": "^1.4.2",
