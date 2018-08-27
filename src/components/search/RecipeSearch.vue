@@ -17,6 +17,24 @@ export default {
     return {
       searchStore
     }
+  },
+  methods: {
+    updateOnlineStatus: function(event) {
+      if (navigator.onLine) {
+        // handle online status
+        console.log('online')
+      } else {
+        // handle offline status
+        console.log('offline')
+      }
+    }
+  },
+  mounted: function() {
+    this.$nextTick(function() {
+      console.log('Search is mounted')
+      window.addEventListener('online', updateOnlineStatus)
+      window.addEventListener('offline', updateOnlineStatus)
+    })
   }
 }
 </script>

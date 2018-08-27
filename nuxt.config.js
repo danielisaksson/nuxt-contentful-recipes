@@ -34,9 +34,41 @@ module.exports = {
       }
     ]
   },
-  modules: ['@nuxtjs/markdownit', '@nuxtjs/pwa'],
+  modules: ['@nuxtjs/markdownit', '@nuxtjs/pwa', '@nuxtjs/sitemap'],
   markdownit: {
     injected: true
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://recept.coko.se',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: true // Enable me when using nuxt generate
+    // routes: [
+    //   '/page/1',
+    //   {
+    //     url: '/page/2',
+    //     changefreq: 'daily',
+    //     priority: 1,
+    //     lastmodISO: '2017-06-30T13:30:00.000Z'
+    //   }
+    // ]
+  },
+  workbox: {
+    runtimeCaching: [
+      {
+        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
+        urlPattern: 'https://fonts.(?:googleapis|gstatic).com/(.*)',
+        // Defaults to `networkFirst` if omitted
+        handler: 'cacheFirst',
+        strategyOptions: {
+          cacheName: 'google-fonts',
+          cacheExpiration: {
+            maxEntries: 30
+          }
+        }
+      }
+    ]
   },
   /*
   ** Customize the progress bar color

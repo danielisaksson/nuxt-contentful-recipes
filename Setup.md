@@ -75,3 +75,11 @@ npm install --save contentful
 ```zsh
 npm install --save vuex
 ```
+
+## Add Nuxt PWA module
+
+[https://pwa.nuxtjs.org/](https://pwa.nuxtjs.org/)
+
+## Add Nuxt Sitemap XML module
+
+[https://www.npmjs.com/package/@nuxtjs/sitemap](https://www.npmjs.com/package/@nuxtjs/sitemap)
