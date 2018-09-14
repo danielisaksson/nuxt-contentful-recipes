@@ -19,14 +19,14 @@ const client = createClient({
 export default {
   data: function() {
     return {
-      recipe: ''
+      recipe: {}
     }
   },
   components: {
     Recipe
   },
   mounted: function() {
-    console.log('Preview mounted', this.$route.params.slug)
+    if (this.$route.params.slug == 'base') return
     client
       .getEntries({
         content_type: 'recipe',

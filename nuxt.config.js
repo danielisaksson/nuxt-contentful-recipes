@@ -110,6 +110,10 @@ module.exports = {
             return `/${fields.slug}`
           })
         })
+        .then(result => {
+          result.push('/preview/base')
+          return result
+        })
     }
   },
   env: {

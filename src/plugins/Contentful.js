@@ -7,7 +7,6 @@ const defaultConfig = {
 
 module.exports = {
   createClient(config = defaultConfig) {
-    console.log('createClient', config)
     return contentful.createClient({
       space: config.space,
       accessToken: config.accessToken,
