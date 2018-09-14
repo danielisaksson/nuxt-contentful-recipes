@@ -4,15 +4,16 @@
 </template>
 
 <script>
-const unitsReg = /(([\d\u00BC-\u00BE][\s\-]*([\d\u00BC-\u00BE])?)+\s*(dl|st|msk|tsk|näve|l|liter|ml|klyftor|buntar|stjälkar|g|mg|kg|paket)(?=[\s\,\.\!\)]))/gi
+const unitsReg = /(([\d\u00BC-\u00BE][\s\-\,]*([\d\u00BC-\u00BE])?)+\s*(dl|st|msk|tsk|näve|l|liter|ml|klyftor|buntar|stjälkar|g|mg|kg|paket)(?=[\s\,\.\!\)]))/gi
 
 export default {
   props: {
     ingredientslists: String,
-    default: '<ul><li>one</li><li>two</li></ul>'
+    default: '## Ingredienser'
   },
   computed: {
     parsedIngredientsLists: function() {
+      if (!this.ingredientslists) return ''
       return this.ingredientslists.replace(unitsReg, '**$2 _$4_**')
     }
   }

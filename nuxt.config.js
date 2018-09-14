@@ -34,7 +34,7 @@ module.exports = {
       }
     ]
   },
-  modules: ['@nuxtjs/markdownit', '@nuxtjs/pwa', '@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/markdownit', '@nuxtjs/sitemap'], //'@nuxtjs/pwa',
   markdownit: {
     injected: true
   },
@@ -116,6 +116,7 @@ module.exports = {
     ALGOLIA_APP: process.env.ALGOLIA_APP,
     ALGOLIA_SEARCH_KEY: process.env.ALGOLIA_SEARCH_KEY,
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
+    CONTENTFUL_PREVIEW_TOKEN: process.env.CONTENTFUL_PREVIEW_TOKEN
   }
 }
