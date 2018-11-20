@@ -21,18 +21,21 @@ export default {
     id: String
   },
   computed: {
+    recipe: function() {
+      return this.$store.getters['recipes/getRecipeByID'](this.id)
+    },
     recipeImageUrl: function() {
       return this.recipe.images
         ? `${
             this.recipe.images[0].fields.file.url
           }?w=256&h=256&fit=fill&fm=jpg&q=60&fl=progressive`
         : 'https://picsum.photos/1920/800/?image=2'
-    },
+    } /* ,
     ...mapState({
       recipe: function(state) {
         return state.recipes.find(recipe => recipe.id == this.id)
       }
-    })
+    }) */
   }
 }
 </script>

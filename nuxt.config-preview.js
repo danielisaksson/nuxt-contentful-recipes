@@ -1,5 +1,6 @@
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const contentful = require('contentful')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 console.log('Building with Preview settings')
 
@@ -10,7 +11,7 @@ module.exports = {
     // '@/assets/css/main.scss'
   ],
   generate: {
-    dir: 'previewdist'
+    dir: 'dist-preview'
   },
   mode: 'spa',
   plugins: ['~/plugins/Contentful', '~/plugins/InstantSearch'],
@@ -34,9 +35,6 @@ module.exports = {
         rel: 'stylesheet',
         type: 'text/css',
         href: 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700'
-        // 'https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display'
-        // Playfair+Display:400,700
-        // Actor|GFS+Didot
       }
     ]
   },
@@ -52,6 +50,24 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    plugins: [
+      /*
+      ** Copy _headers and _redirects files to the static folder
+      ** before they are copied to the dist-preview folder
+       */
+      new CopyWebpackPlugin([
+        {
+          from: 'netlify-buildfiles/_redirects-preview',
+          to: '../../src/static/_redirects',
+          toType: 'file'
+        },
+        {
+          from: 'netlify-buildfiles/_headers-preview',
+          to: '../../src/static/_headers',
+          toType: 'file'
+        }
+      ])
+    ],
     // analyze: true,
     /*
     ** Run ESLint on save

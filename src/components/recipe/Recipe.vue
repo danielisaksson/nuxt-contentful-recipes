@@ -57,7 +57,8 @@ export default {
   computed: {
     getHeaderImage: function() {
       const index = Math.floor(Math.random() * 1084)
-      return this.recipe.images
+      console.log('Recipe getHeaderImage', this.recipe)
+      return this.recipe && this.recipe.images
         ? `${
             this.recipe.images[0].fields.file.url
           }?w=1400&h=933&fit=fill&fm=jpg&q=70&fl=progressive`

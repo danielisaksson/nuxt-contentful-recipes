@@ -1,5 +1,6 @@
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const contentful = require('contentful')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   srcDir: 'src/',
@@ -78,6 +79,24 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    plugins: [
+      /*
+      ** Copy _headers and _redirects files to the static folder
+      ** before they are copied to the dist folder
+       */
+      new CopyWebpackPlugin([
+        {
+          from: 'netlify-buildfiles/_redirects',
+          to: '../../src/static/_redirects',
+          toType: 'file'
+        },
+        {
+          from: 'netlify-buildfiles/_headers',
+          to: '../../src/static/_headers',
+          toType: 'file'
+        }
+      ])
+    ],
     // analyze: true,
     /*
     ** Run ESLint on save
@@ -94,26 +113,27 @@ module.exports = {
     }
   },
   generate: {
-    routes: function() {
-      const client = contentful.createClient({
+    routes: async function() {
+      const config = {
         space: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      }
+      const client = contentful.createClient(config)
+      const recipes = await client.getEntries({
+        content_type: 'recipe', //process.env.CTF_PROJECT_ID
+        select: 'fields'
       })
 
-      return client
-        .getEntries({
-          content_type: 'recipe',
-          select: 'fields'
-        })
-        .then(result => {
-          return result.items.map(({ fields }) => {
-            return `/${fields.slug}`
-          })
-        })
-        .then(result => {
-          result.push('/preview/base')
-          return result
-        })
+      const recipesRoutes = recipes.items.map(({ sys, fields }) => {
+        return {
+          route: `/${fields.slug}`,
+          payload: { id: sys.id, ...fields }
+        }
+      })
+
+      // recipesRoutes.push('/preview/base')
+      // console.log('recipesRoutes', recipesRoutes)
+      return [...recipesRoutes]
     }
   },
   env: {
