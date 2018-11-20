@@ -86,12 +86,12 @@ module.exports = {
        */
       new CopyWebpackPlugin([
         {
-          from: 'netlify-buildfiles/_redirects',
+          from: 'netlify-buildfiles/_redirects-live',
           to: '../../src/static/_redirects',
           toType: 'file'
         },
         {
-          from: 'netlify-buildfiles/_headers',
+          from: 'netlify-buildfiles/_headers-live',
           to: '../../src/static/_headers',
           toType: 'file'
         }
