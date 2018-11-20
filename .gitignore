@@ -9,7 +9,7 @@ npm-debug.log
 
 # Nuxt generate
 dist
-previewdist
+dist-preview
 
 # API Keys
 .env
