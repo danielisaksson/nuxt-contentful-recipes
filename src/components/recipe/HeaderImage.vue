@@ -1,5 +1,8 @@
 <template>
-  <div class="recipe__header-image" :style="{ 'background-image': `url(${ imageUrl })`}">
+  <div
+    class="recipe__header-image"
+    :style="{ 'background-image': `url(${imageUrl})` }"
+  >
     <slot></slot>
   </div>
 </template>

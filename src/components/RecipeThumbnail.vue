@@ -1,15 +1,17 @@
 <template>
-  <div class="recipe-thumbnail_wrapper" >
+  <div class="recipe-thumbnail_wrapper">
     <nuxt-link :to="recipe.slug" class="recipe-thumbnail_link">
       <div class="recipe-thumbnail_image_wrapper">
-        <div class="recipe-thumbnail_image" :style="{ 'background-image': `url(${ recipeImageUrl })`}" />
+        <div
+          class="recipe-thumbnail_image"
+          :style="{ 'background-image': `url(${recipeImageUrl})` }"
+        />
       </div>
 
       <h3>{{ recipe.recipeName }}</h3>
       <p>{{ recipe.subtitle }}</p>
     </nuxt-link>
   </div>
-
 </template>
 
 <script>

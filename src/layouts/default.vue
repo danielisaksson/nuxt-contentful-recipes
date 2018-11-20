@@ -1,14 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <header class="app-header">
-      <app-header></app-header>
-    </header>
-    <main class="app-body">
-      <nuxt/>
-    </main>
-    <footer class="app-footer">
-      <app-footer/>
-    </footer>
+    <header class="app-header"><app-header></app-header></header>
+    <main class="app-body"><nuxt /></main>
+    <footer class="app-footer"><app-footer /></footer>
   </div>
 </template>
 
@@ -23,7 +17,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss">
 @import '~/assets/css/main.scss';

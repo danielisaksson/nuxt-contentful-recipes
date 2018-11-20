@@ -1,7 +1,9 @@
 <template>
   <div>
-    <!-- <h1>Hello preview</h1>
-    <h3>Slug: {{recipe.slug}}</h3> -->
+    <!--
+      <h1>Hello preview</h1>
+      <h3>Slug: {{recipe.slug}}</h3>
+    -->
     <recipe v-bind:recipe="recipe" />
   </div>
 </template>
@@ -42,5 +44,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

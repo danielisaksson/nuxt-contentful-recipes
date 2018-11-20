@@ -1,6 +1,9 @@
 <template>
   <div class="recipesearch_wrapper">
-      <ais-input :search-store="searchStore" placeholder="search recipes"></ais-input>
+    <ais-input
+      :search-store="searchStore"
+      placeholder="search recipes"
+    ></ais-input>
   </div>
 </template>
 
