@@ -1,7 +1,10 @@
 <template>
   <div class="recipe">
     <header-image :imageUrl="getHeaderImage">
-        <recipe-title v-bind:title="recipe.recipeName" v-bind:subtitle="recipe.subtitle" />
+      <recipe-title
+        v-bind:title="recipe.recipeName"
+        v-bind:subtitle="recipe.subtitle"
+      />
     </header-image>
 
     <div id="recipe-description" class="wrapper recipe-description">
@@ -9,23 +12,25 @@
     </div>
 
     <div id="recipe-body" class="wrapper recipe-body">
-      <ingredients-list v-bind:ingredientslists="recipe.ingredientslists"/>
+      <ingredients-list v-bind:ingredientslists="recipe.ingredientslists" />
       <cooking-instructions v-bind:instructions="recipe.instructions" />
     </div>
 
     <div id="recipe-footer" class="wrapper recipe-footer">
       <ul class="tags">
-        <li class="tag" v-for="tag in recipe.tags" :key="tag"> {{ tag }}</li>
+        <li class="tag" v-for="tag in recipe.tags" :key="tag">{{ tag }}</li>
       </ul>
     </div>
 
-    <!-- <no-ssr>
-      <carousel :perPage=1>
-        <slide>Slide 1</slide>
-        <slide>Slide 2</slide>
-        <slide>Slide 3</slide>
-      </carousel>
-    </no-ssr> -->
+    <!--
+      <no-ssr>
+        <carousel :perPage=1>
+          <slide>Slide 1</slide>
+          <slide>Slide 2</slide>
+          <slide>Slide 3</slide>
+        </carousel>
+      </no-ssr>
+    -->
   </div>
 </template>
 

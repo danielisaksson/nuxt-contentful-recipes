@@ -1,17 +1,21 @@
 <template>
   <section class="wrapper">
-      <!-- <h1 class="title">
+    <!--
+      <h1 class="title">
         nuxt-contentful-recipes
-      </h1> -->
+      </h1>
+    -->
 
-      <!-- <ul>
+    <!--
+      <ul>
         <li v-for="recipe in recipes" :key="recipe.slug">
           <nuxt-link :to="recipe.slug">{{ recipe.recipeName }}</nuxt-link>
         </li>
-      </ul> -->
+      </ul>
+    -->
 
-     <algolia-store-index>
-       <recipe-search-results></recipe-search-results>
+    <algolia-store-index>
+      <recipe-search-results></recipe-search-results>
     </algolia-store-index>
   </section>
 </template>

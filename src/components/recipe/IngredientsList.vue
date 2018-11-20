@@ -1,6 +1,8 @@
 <template>
-  <div class="recipe__ingredients-list" v-html="$md.render(parsedIngredientsLists)">
-  </div>
+  <div
+    class="recipe__ingredients-list"
+    v-html="$md.render(parsedIngredientsLists)"
+  ></div>
 </template>
 
 <script>

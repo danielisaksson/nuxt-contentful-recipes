@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <recipe v-bind:recipe="recipe" />
-  </div>
+  <div><recipe v-bind:recipe="recipe" /></div>
 </template>
 <script>
 import { mapState } from 'vuex'

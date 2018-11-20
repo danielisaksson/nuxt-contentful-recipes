@@ -1,10 +1,7 @@
 <template>
-  <ais-index
-      :search-store="searchStore"
-      index-name="recipes"
-    >
+  <ais-index :search-store="searchStore" index-name="recipes">
     <slot></slot>
-    </ais-index>
+  </ais-index>
 </template>
 
 <script>
