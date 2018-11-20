@@ -17,23 +17,31 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 import AlgoliaStoreIndex from '~/components/search/AlgoliaStoreIndex'
 import RecipeSearchResults from '~/components/search/RecipeSearchResults'
 
 export default {
   data() {
-    return {}
+    return {
+      recipes: []
+    }
   },
   components: {
     AlgoliaStoreIndex,
     RecipeSearchResults
   },
-  computed: {
+  async fetch({ params, store }) {
+    console.log('Startpage Fetch Recipes')
+    this.recipes = await store.dispatch('recipes/getRecipes')
+    console.log('this.recipes.length = ', this.recipes.length)
+  }
+  /* , computed: {
+
     ...mapState({
       recipes: state => state.recipes
     })
-  }
+  } */
 }
 </script>
 

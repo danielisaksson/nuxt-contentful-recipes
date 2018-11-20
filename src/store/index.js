@@ -1,3 +1,20 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+// import modules
+import recipes from './modules/recipes'
+
+export default () => {
+  return new Vuex.Store({
+    modules: {
+      recipes
+    }
+  })
+}
+
+/*
 import Vuex from 'vuex'
 import { createClient } from '~/plugins/Contentful.js'
 
@@ -32,3 +49,4 @@ const createStore = () => {
 }
 
 export default createStore
+ */
