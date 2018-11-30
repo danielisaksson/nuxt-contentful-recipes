@@ -1,8 +1,24 @@
+const fs = require('fs')
+const path = require('path')
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const contentful = require('contentful')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+console.log('Building with Live settings')
 
 module.exports = {
+  /* hooks: {
+    'generate:done': nuxt => {
+      fs.copyFileSync(
+        'netlify-buildfiles/_redirects-live',
+        path.join(nuxt.options.generate.dir, '_redirects')
+      )
+
+      fs.copyFileSync(
+        'netlify-buildfiles/_headers-live',
+        path.join(nuxt.options.generate.dir, '_headers')
+      )
+    }
+  }, */
   srcDir: 'src/',
   css: [
     // SCSS file in the project
@@ -41,12 +57,11 @@ module.exports = {
   },
   router: {
     extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'search',
-        path: '/search',
-        component: resolve(__dirname, '~/pages/search.vue'),
-        props: route => ({ query: route.query.q })
+      const searchRouteIndex = routes.findIndex(({ name }) => {
+        return name === 'search'
       })
+
+      routes[searchRouteIndex].props = route => ({ query: route.query.q })
     }
   },
   sitemap: {
@@ -89,24 +104,6 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    plugins: [
-      /*
-       ** Copy _headers and _redirects files to the static folder
-       ** before they are copied to the dist folder
-       */
-      new CopyWebpackPlugin([
-        {
-          from: 'netlify-buildfiles/_redirects-live',
-          to: '../../src/static/_redirects',
-          toType: 'file'
-        },
-        {
-          from: 'netlify-buildfiles/_headers-live',
-          to: '../../src/static/_headers',
-          toType: 'file'
-        }
-      ])
-    ],
     // analyze: true,
     /*
      ** Run ESLint on save
@@ -140,10 +137,7 @@ module.exports = {
           payload: { id: sys.id, ...fields }
         }
       })
-
-      // recipesRoutes.push('/preview/base')
-      // console.log('recipesRoutes', recipesRoutes)
-      return [...recipesRoutes]
+      return recipesRoutes
     }
   },
   env: {

@@ -1,10 +1,24 @@
+const fs = require('fs')
+const path = require('path')
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const contentful = require('contentful')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 console.log('Building with Preview settings')
 
 module.exports = {
+  hooks: {
+    'generate:done': nuxt => {
+      fs.copyFileSync(
+        'netlify-buildfiles/_redirects-preview',
+        path.join(nuxt.options.generate.dir, '_redirects')
+      )
+
+      fs.copyFileSync(
+        'netlify-buildfiles/_headers-preview',
+        path.join(nuxt.options.generate.dir, '_headers')
+      )
+    }
+  },
   srcDir: 'src/',
   css: [
     // SCSS file in the project
@@ -16,8 +30,8 @@ module.exports = {
   mode: 'spa',
   plugins: ['~/plugins/Contentful', '~/plugins/InstantSearch'],
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: 'Coko Cooking',
     meta: [
@@ -43,35 +57,17 @@ module.exports = {
     injected: true
   },
   /*
-  ** Customize the progress bar color
-  */
+   ** Customize the progress bar color
+   */
   loading: { color: '#3B8070' },
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
-    plugins: [
-      /*
-      ** Copy _headers and _redirects files to the static folder
-      ** before they are copied to the dist-preview folder
-       */
-      new CopyWebpackPlugin([
-        {
-          from: 'netlify-buildfiles/_redirects-preview',
-          to: '../../src/static/_redirects',
-          toType: 'file'
-        },
-        {
-          from: 'netlify-buildfiles/_headers-preview',
-          to: '../../src/static/_headers',
-          toType: 'file'
-        }
-      ])
-    ],
     // analyze: true,
     /*
-    ** Run ESLint on save
-    */
+     ** Run ESLint on save
+     */
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
