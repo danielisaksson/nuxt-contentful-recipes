@@ -10,8 +10,8 @@ module.exports = {
   ],
   plugins: ['~/plugins/Contentful', '~/plugins/InstantSearch'],
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: 'Coko Cooking',
     meta: [
@@ -38,6 +38,16 @@ module.exports = {
   modules: ['@nuxtjs/markdownit', '@nuxtjs/sitemap'], //'@nuxtjs/pwa',
   markdownit: {
     injected: true
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'search',
+        path: '/search',
+        component: resolve(__dirname, '~/pages/search.vue'),
+        props: route => ({ query: route.query.q })
+      })
+    }
   },
   sitemap: {
     path: '/sitemap.xml',
@@ -72,17 +82,17 @@ module.exports = {
     ]
   },
   /*
-  ** Customize the progress bar color
-  */
+   ** Customize the progress bar color
+   */
   loading: { color: '#3B8070' },
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     plugins: [
       /*
-      ** Copy _headers and _redirects files to the static folder
-      ** before they are copied to the dist folder
+       ** Copy _headers and _redirects files to the static folder
+       ** before they are copied to the dist folder
        */
       new CopyWebpackPlugin([
         {
@@ -99,8 +109,8 @@ module.exports = {
     ],
     // analyze: true,
     /*
-    ** Run ESLint on save
-    */
+     ** Run ESLint on save
+     */
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({

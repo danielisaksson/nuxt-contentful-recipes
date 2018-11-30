@@ -1,29 +1,17 @@
 <template>
   <section class="wrapper">
-    <!--
-      <h1 class="title">
-        nuxt-contentful-recipes
-      </h1>
-    -->
-
-    <!--
-      <ul>
-        <li v-for="recipe in recipes" :key="recipe.slug">
-          <nuxt-link :to="recipe.slug">{{ recipe.recipeName }}</nuxt-link>
-        </li>
-      </ul>
-    -->
-
-    <algolia-store-index>
-      <recipe-search-results></recipe-search-results>
-    </algolia-store-index>
+    <div class="recipes_list">
+      <recipe-thumbnail
+        v-for="recipe in recipes"
+        :key="recipe.slug"
+        :id="recipe.id"
+      />
+    </div>
   </section>
 </template>
 
 <script>
-// import { mapState } from 'vuex'
-import AlgoliaStoreIndex from '~/components/search/AlgoliaStoreIndex'
-import RecipeSearchResults from '~/components/search/RecipeSearchResults'
+import RecipeThumbnail from '~/components/RecipeThumbnail'
 
 export default {
   data() {
@@ -32,25 +20,30 @@ export default {
     }
   },
   components: {
-    AlgoliaStoreIndex,
-    RecipeSearchResults
+    RecipeThumbnail
   },
-  async fetch({ params, store }) {
+  async asyncData({ params, store }) {
     console.log('Startpage Fetch Recipes')
-    this.recipes = await store.dispatch('recipes/getRecipes')
-    console.log('this.recipes.length = ', this.recipes.length)
+    let recipes = await store.dispatch('recipes/getRecipes')
+    console.log('recipes.length = ', recipes.length)
+    return { recipes: recipes }
   }
-  /* , computed: {
-
-    ...mapState({
-      recipes: state => state.recipes
-    })
-  } */
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~/assets/css/_variables.scss';
+
+.recipes_list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+
+  > * {
+    flex: 1 1 320px;
+  }
+}
 
 .wrapper {
   position: relative;

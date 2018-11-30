@@ -24,7 +24,10 @@ export default {
   },
   computed: {
     recipe: function() {
-      return this.$store.getters['recipes/getRecipeByID'](this.id)
+      // console.log('Thumbnail for', this.id)
+      let res = this.$store.getters['recipes/getRecipeByID'](this.id)
+      // console.log('res', res)
+      return res
     },
     recipeImageUrl: function() {
       return this.recipe.images
