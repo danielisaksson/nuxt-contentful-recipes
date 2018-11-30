@@ -9,19 +9,21 @@ const mutations = {
   setRecipes(state, payload) {
     state.recipes = payload
   },
-  setRecipe(state, item) {
-    if (getters.getRecipeBySlug(item.slug)) {
-      console.log(`setRecipe ${item.slug} - Recipe already exist`)
-    } else {
-      state.recipes.push(item)
-      console.log(`setRecipe ${item.slug}`)
-    }
+  setRecipe(state, payload) {
+    // console.log(`setRecipe`, payload)
+    state.recipes.push(payload)
   }
 }
 
 const actions = {
-  async getRecipes({ commit }) {
+  async getRecipes({ state, commit }) {
     console.log('getRecipes')
+
+    if (state.recipes.length > 1) {
+      console.log(`${state.recipes.length} already fetched`)
+      return state.recipes
+    }
+
     const items = await client
       .getEntries({
         content_type: 'recipe',
@@ -34,16 +36,41 @@ const actions = {
       })
     commit('setRecipes', items)
     return items
+  },
+  async getRecipe(context, slug) {
+    console.log('Vuex: getRecipe', slug)
+    const stored_recipe = context.getters.getRecipeBySlug(slug)
+    if (stored_recipe) return stored_recipe
+
+    const item = await client
+      .getEntries({
+        content_type: 'recipe',
+        'fields.slug': slug
+      })
+      .then(result => {
+        return result.items.map(({ sys, fields }) => {
+          return { id: sys.id, ...fields }
+        })
+      })
+    context.commit('setRecipe', item[0])
+    return item[0]
   }
 }
 
 const getters = {
   getRecipeBySlug: state => slug => {
+    console.log('getRecipeBySlug', slug)
     if (slug) {
       const recipe = state.recipes.find(item => {
         return `${item.slug}` === `${slug}`
       })
-      return recipe
+      if (recipe) {
+        console.log('Found stored recipe', recipe.slug)
+        return recipe
+      } else {
+        console.log('No stored recipe found')
+        return null
+      }
     }
     return null
   },

@@ -45,7 +45,18 @@ import HeaderImage from '~/components/recipe/HeaderImage'
 
 export default {
   props: {
-    recipe: Object
+    recipe: {
+      type: Object,
+      default: function() {
+        return {
+          name: 'Recipe',
+          description: '',
+          recipeName: 'Default recipeName',
+          subtitle: 'Default subtitle',
+          slug: 'default'
+        }
+      }
+    }
   },
   data: function() {
     return {}

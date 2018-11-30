@@ -1,5 +1,5 @@
 <template>
-  <ais-index :search-store="searchStore" index-name="recipes">
+  <ais-index :search-store="searchStore" index-name="recipes" :query="query">
     <slot></slot>
   </ais-index>
 </template>
@@ -13,9 +13,23 @@ const searchStore = createFromAlgoliaCredentials(
 )
 
 export default {
+  props: {
+    query: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       searchStore
+    }
+  },
+  watch: {
+    'searchStore.query'(value) {
+      this.$router.push({
+        name: 'search',
+        query: { q: value }
+      })
     }
   }
 }
