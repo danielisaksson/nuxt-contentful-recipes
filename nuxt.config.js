@@ -80,7 +80,7 @@ module.exports = {
     //   }
     // ]
   },
-  workbox: {
+  /* workbox: {
     runtimeCaching: [
       {
         // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
@@ -95,7 +95,7 @@ module.exports = {
         }
       }
     ]
-  },
+  }, */
   /*
    ** Customize the progress bar color
    */
