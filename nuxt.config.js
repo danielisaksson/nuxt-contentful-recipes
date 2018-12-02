@@ -127,7 +127,7 @@ module.exports = {
       }
       const client = contentful.createClient(config)
       const recipes = await client.getEntries({
-        content_type: 'recipe', //process.env.CTF_PROJECT_ID
+        content_type: process.env.CONTENTFUL_RECIPE_TYPE,
         select: 'fields'
       })
 
@@ -145,6 +145,8 @@ module.exports = {
     ALGOLIA_SEARCH_KEY: process.env.ALGOLIA_SEARCH_KEY,
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
     CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-    CONTENTFUL_PREVIEW_TOKEN: process.env.CONTENTFUL_PREVIEW_TOKEN
+    CONTENTFUL_PREVIEW_TOKEN: process.env.CONTENTFUL_PREVIEW_TOKEN,
+    CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
+    CONTENTFUL_RECIPE_TYPE: process.env.CONTENTFUL_RECIPE_TYPE
   }
 }

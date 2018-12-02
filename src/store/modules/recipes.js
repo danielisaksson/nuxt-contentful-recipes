@@ -26,7 +26,7 @@ const actions = {
 
     const items = await client
       .getEntries({
-        content_type: 'recipe',
+        content_type: process.env.CONTENTFUL_RECIPE_TYPE,
         select: 'fields'
       })
       .then(result => {
@@ -44,7 +44,7 @@ const actions = {
 
     const item = await client
       .getEntries({
-        content_type: 'recipe',
+        content_type: process.env.CONTENTFUL_RECIPE_TYPE,
         'fields.slug': slug
       })
       .then(result => {
