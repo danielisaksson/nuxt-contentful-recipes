@@ -48,7 +48,8 @@ module.exports = {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700'
+        href:
+          'https://fonts.googleapis.com/css?family=Playfair+Display|Zilla+Slab:400,700'
       }
     ]
   },
@@ -84,7 +85,6 @@ module.exports = {
     ALGOLIA_SEARCH_KEY: process.env.ALGOLIA_SEARCH_KEY,
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
     CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-    CONTENTFUL_PREVIEW_TOKEN: process.env.CONTENTFUL_PREVIEW_TOKEN,
     CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
     CONTENTFUL_RECIPE_TYPE: process.env.CONTENTFUL_RECIPE_TYPE
   }

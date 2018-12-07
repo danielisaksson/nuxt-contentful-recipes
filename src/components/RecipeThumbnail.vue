@@ -1,15 +1,15 @@
 <template>
   <div class="recipe-thumbnail_wrapper">
     <nuxt-link :to="recipe.slug" class="recipe-thumbnail_link">
-      <div class="recipe-thumbnail_image_wrapper">
+      <div class="recipe-thumbnail_image_wrapper" v-if="recipe.images">
         <div
           class="recipe-thumbnail_image"
           :style="{ 'background-image': `url(${recipeImageUrl})` }"
         />
       </div>
 
-      <h3>{{ recipe.recipeName }}</h3>
-      <p>{{ recipe.subtitle }}</p>
+      <h3 class="thumbnail__name">{{ recipe.recipeName }}</h3>
+      <p class="thumbnail__subtitle">{{ recipe.subtitle }}</p>
     </nuxt-link>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
       return this.recipe.images
         ? `${
             this.recipe.images[0].fields.file.url
-          }?w=256&h=256&fit=fill&fm=jpg&q=60&fl=progressive`
+          }?w=520&h=220&fit=fill&fm=jpg&q=60&fl=progressive`
         : 'https://picsum.photos/1920/800/?image=2'
     } /* ,
     ...mapState({
@@ -46,20 +46,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.thumbnail__name {
+  font-family: 'Zilla Slab', serif;
+  font-size: 4.375rem;
+  font-weight: 400;
+  line-height: 3.6rem;
+  margin: 0.5rem 0 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.thumbnail__subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
 .recipe-thumbnail_wrapper {
   // background-color: black;
   // border: 1px solid salmon;
   // min-height: 200px;
-  max-width: 256px;
+  max-width: 520px;
   margin: 15px;
   text-align: left;
+  overflow-wrap: break-word;
 
   .recipe-thumbnail_image_wrapper {
-    border-radius: 8px;
-    width: 256px;
-    height: 256px;
+    border-radius: 3px;
+    width: 100%;
+    height: 220px;
     overflow: hidden;
-    background-color: #760086;
+    background-color: #222222;
   }
   .recipe-thumbnail_image {
     background-position: 50% 50%;
