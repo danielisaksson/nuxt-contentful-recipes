@@ -10,8 +10,10 @@ const unitsReg = /(([\d\u00BC-\u00BE][\s\-\,]*([\d\u00BC-\u00BE])?)+\s*(dl|st|ms
 
 export default {
   props: {
-    ingredientslists: String,
-    default: '## Ingredienser'
+    ingredientslists: {
+      type: String,
+      default: '## Ingredienser'
+    }
   },
   computed: {
     parsedIngredientsLists: function() {
