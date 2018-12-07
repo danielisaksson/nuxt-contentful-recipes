@@ -1,8 +1,14 @@
-const fs = require('fs')
+import fs from 'fs'
+import path from 'path'
+import dotenv from 'dotenv'
+import contentful from 'contentful'
+dotenv.config()
+
+/* const fs = require('fs')
 const path = require('path')
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const contentful = require('contentful')
-
+ */
 console.log('Building with Live settings')
 
 module.exports = {
