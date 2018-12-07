@@ -15,7 +15,9 @@
     "algolia": "node serverfunctions/algoliasync.js",
     "deploy": "npm run algolia && npm run generate",
     "deploy-preview": "nuxt build --config-file nuxt.config-preview.js",
-    "dev-preview": "nuxt --config-file nuxt.config-preview.js"
+    "dev-preview": "nuxt --config-file nuxt.config-preview.js",
+    "lambda:build": "netlify-lambda build netlify-functions",
+    "lambda:serve": "netlify-lambda serve netlify-functions"
   },
   "dependencies": {
     "@nuxtjs/markdownit": "^1.2.2",
@@ -37,6 +39,7 @@
     "eslint-loader": "^2.1.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-vue": "^5.0.0",
+    "netlify-lambda": "^1.1.0",
     "node-sass": "^4.10.0",
     "prettier": "^1.15.3",
     "sass-loader": "^7.1.0"
