@@ -16,7 +16,9 @@
         -->
       </template>
     </ais-results>
-    <!-- <div slot="footer"><ais-powered-by></ais-powered-by></div> -->
+    <div slot="footer">
+      <ais-powered-by></ais-powered-by>
+    </div>
   </div>
 </template>
 
@@ -39,14 +41,15 @@ export default {
   justify-content: center;
 
   > * {
-    flex: 1 1 320px;
+    flex: 1 1 380px;
   }
 }
-.recipe-results_list {
-  // background-color: salmon;
-  text-align: center;
-}
+
 .ais-powered-by {
   margin: 20px;
 }
+/* .recipe-results_list {
+  // background-color: salmon;
+  // text-align: center;
+} */
 </style>

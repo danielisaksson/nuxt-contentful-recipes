@@ -1,12 +1,31 @@
 <template>
   <section class="wrapper">
-    <div class="recipes_list">
+    <div
+      v-masonry
+      transition-duration="0"
+      class="masonry-container"
+      itemSelector=".grid-item"
+      columnWidth=".grid-sizer"
+      percentPosition="true"
+      v-show="showGrid"
+    >
+      <div class="grid-sizer" />
       <recipe-thumbnail
+        v-masonry-tile
+        class="grid-item"
         v-for="recipe in recipes"
         :key="recipe.slug"
         :id="recipe.id"
       />
     </div>
+
+    <!-- <div class="recipes_list">
+      <recipe-thumbnail
+        v-for="recipe in recipes"
+        :key="recipe.slug"
+        :id="recipe.id"
+      />
+    </div>-->
   </section>
 </template>
 
@@ -16,11 +35,18 @@ import RecipeThumbnail from '~/components/RecipeThumbnail'
 export default {
   data() {
     return {
-      recipes: []
+      recipes: [],
+      showGrid: false
     }
   },
   components: {
     RecipeThumbnail
+  },
+  mounted() {
+    if (typeof this.$redrawVueMasonry === 'function') {
+      this.$redrawVueMasonry()
+      this.showGrid = true
+    }
   },
   async asyncData({ params, store }) {
     console.log('Startpage Fetch Recipes')
@@ -34,28 +60,32 @@ export default {
 <style lang="scss" scoped>
 @import '~/assets/css/_variables.scss';
 
-.recipes_list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
+.grid-sizer,
+.grid-item {
+  width: 33.33%;
 
-  > * {
-    flex: 1 1 320px;
+  @media screen and (max-width: map-get($mq-breakpoints, xlarge)) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: map-get($mq-breakpoints, medium)) {
+    width: 100%;
   }
 }
 
-.wrapper {
-  position: relative;
+.fade {
+  &-transition {
+    transition: opacity 3s ease-in;
+  }
+  &-enter,
+  &-leave {
+    opacity: 0;
+  }
+}
+
+.masonry-container {
+  width: 100vw;
   max-width: map-get($mq-breakpoints, xxlarge);
   margin: 0 auto;
-  text-align: left;
-}
-//$mq-breakpoints
-@media screen and (max-width: map-get($mq-breakpoints, xxlarge)) {
-  .wrapper {
-    margin-left: 30px;
-    margin-right: 30px;
-  }
 }
 </style>

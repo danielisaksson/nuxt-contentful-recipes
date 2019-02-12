@@ -35,7 +35,11 @@ module.exports = {
     dir: 'dist-preview'
   },
   mode: 'spa',
-  plugins: ['~/plugins/Contentful', '~/plugins/InstantSearch'],
+  plugins: [
+    '~/plugins/Contentful',
+    '~/plugins/InstantSearch',
+    { src: '~/plugins/vue-masonry', ssr: false }
+  ],
   /*
    ** Headers of the page
    */
@@ -63,6 +67,17 @@ module.exports = {
   modules: ['@nuxtjs/markdownit', '@nuxtjs/sitemap'], //'@nuxtjs/pwa',
   markdownit: {
     injected: true
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      const searchRouteIndex = routes.findIndex(({ name }) => {
+        return name === 'search'
+      })
+
+      routes[searchRouteIndex].props = ({ query }) => {
+        return { query: query.q }
+      }
+    }
   },
   /*
    ** Customize the progress bar color

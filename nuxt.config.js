@@ -17,7 +17,11 @@ module.exports = {
     // SCSS file in the project
     // '@/assets/css/main.scss'
   ],
-  plugins: ['~/plugins/Contentful', '~/plugins/InstantSearch'],
+  plugins: [
+    '~/plugins/Contentful',
+    '~/plugins/InstantSearch',
+    { src: '~/plugins/vue-masonry', ssr: false }
+  ],
   /*
    ** Headers of the page
    */
@@ -52,7 +56,9 @@ module.exports = {
         return name === 'search'
       })
 
-      routes[searchRouteIndex].props = route => ({ query: route.query.q })
+      routes[searchRouteIndex].props = ({ query }) => {
+        return { query: query.q }
+      }
     }
   },
   sitemap: {
