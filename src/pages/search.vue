@@ -50,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 @import '~/assets/css/_variables.scss';
 
-.wrapper {
+/* .wrapper {
   position: relative;
   max-width: map-get($mq-breakpoints, xxlarge);
   margin: 0 auto;
@@ -62,5 +62,5 @@ export default {
     margin-left: 30px;
     margin-right: 30px;
   }
-}
+} */
 </style>

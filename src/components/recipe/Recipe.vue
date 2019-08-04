@@ -1,12 +1,11 @@
 <template>
   <div class="recipe">
-    <header-image :imageUrl="getHeaderImage">
-      <recipe-title
-        v-bind:title="recipe.recipeName"
-        v-bind:subtitle="recipe.subtitle"
-      />
-    </header-image>
+    <header-image :imageUrl="getHeaderImage"></header-image>
 
+    <recipe-title
+      v-bind:title="recipe.recipeName"
+      v-bind:subtitle="recipe.subtitle"
+    />
     <div id="recipe-description" class="wrapper recipe-description">
       <recipe-description v-bind:description="recipe.description" />
     </div>
@@ -17,9 +16,9 @@
     </div>
 
     <div id="recipe-footer" class="wrapper recipe-footer">
-      <ul class="tags">
+      <!-- <ul class="tags">
         <li class="tag" v-for="tag in recipe.tags" :key="tag">{{ tag }}</li>
-      </ul>
+      </ul>-->
     </div>
 
     <!--
@@ -114,7 +113,7 @@ export default {
 
   &::before {
     content: '';
-    border-bottom: solid 1px #3b9792;
+    // border-bottom: solid 1px #3b9792;
     position: absolute;
     top: -0.85rem;
     width: 100%;

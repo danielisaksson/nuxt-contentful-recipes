@@ -1,7 +1,7 @@
 <template>
   <div class="header-wrapper">
     <algolia-store-index>
-      <ais-input v-if="online" placeholder="search recipes"></ais-input>
+      <ais-input v-if="online" placeholder="sök recept"></ais-input>
     </algolia-store-index>
   </div>
 </template>
@@ -40,5 +40,18 @@ export default {
 .header-wrapper {
   min-height: map-get($sizes, headerHeight);
   background-color: map-get($colors, headerBackground);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ais-input {
+  border: none;
+  border-radius: 0;
+  background: none;
+  font-size: 1.4rem;
+  width: 33vw;
+  min-width: 300px;
+  // border-bottom: 1px solid #ccc;
 }
 </style>

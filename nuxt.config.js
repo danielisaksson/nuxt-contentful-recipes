@@ -42,7 +42,7 @@ module.exports = {
         rel: 'stylesheet',
         type: 'text/css',
         href:
-          'https://fonts.googleapis.com/css?family=Playfair+Display|Zilla+Slab:400,700'
+          'https://fonts.googleapis.com/css?family=Playfair+Display|Zilla+Slab:300,400,700|Noto+Serif|Zilla+Slab+Highlight'
       }
     ]
   },

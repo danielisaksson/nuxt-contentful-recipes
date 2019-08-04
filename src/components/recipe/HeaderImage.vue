@@ -25,9 +25,10 @@ export default {
   background-position: 50% 50%;
   background-size: cover;
   position: relative;
-  height: calc(100vh - 300px);
+  height: 65vh;
+  /* height: calc(100vh - 300px);
   max-height: 768px;
-  min-height: 200px;
+  min-height: 200px; */
 }
 .recipe__header-image::before {
   content: '';

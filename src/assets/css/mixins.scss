@@ -1,0 +1,18 @@
+@import '_variables.scss';
+
+@mixin masonry-column-width($cols) {
+  width: calc(100%/#{$cols} - (#{$masonry-gutter-width} * (#{$cols} - 1) / #{$cols}));
+}
+
+@mixin masonry-column() {
+
+  @include masonry-column-width(3);
+
+  @media screen and (max-width: map-get($mq-breakpoints, xlarge)) {
+    @include masonry-column-width(2);
+  }
+
+  @media screen and (max-width: map-get($mq-breakpoints, medium)) {
+    width: 100%;
+  }
+}

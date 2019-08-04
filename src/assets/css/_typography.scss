@@ -1,4 +1,11 @@
-$body-font: -apple-system,
+@import '_variables.scss';
+
+$body-font: Zilla Slab,
+Roboto Slab,
+-apple-system,
+BlinkMacSystemFont,
+sans-serif;
+/* -apple-system,
 BlinkMacSystemFont,
 "Segoe UI",
 Roboto,
@@ -6,8 +13,130 @@ Oxygen-Sans,
 Ubuntu,
 Cantarell,
 "Helvetica Neue",
-sans-serif;
-$primary-headline: 'Zilla Slab',
+sans-serif; */
+$primary-headline: 'Noto Serif',
 serif;
 $secondary-headline: 'Playfair Display',
 serif;
+
+/* H1, Headline 1 */
+h1 {
+  font-family: Noto Serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.0;
+  font-size: calc(30px + 3vw);
+}
+
+h2 {
+  font-family: Zilla Slab;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.1;
+  font-size: calc(24px + 0.8vw);
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: Zilla Slab Highlight;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.1;
+  font-size: calc(16px + 0.4vw);
+  text-transform: uppercase;
+}
+
+.caption {
+  font-family: Zilla Slab;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.3;
+  font-size: calc(20px + 0.2vw);
+}
+
+html,
+p {
+  color: map-get($colors, text);
+  font-family: $body-font;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: 16px;
+
+  word-spacing: 1px;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0.75rem 0 0.95rem 0;
+  color: #282724;
+}
+
+/* h1,
+h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+} */
+
+/* h2 {
+  font-weight: 300;
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+} */
+
+/* h3 {
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  margin: 0.5rem 0 0.75rem 0;
+} */
+
+/* p {
+  font-size: 0.875rem;
+} */
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: map-get($colors, links);
+  text-decoration: none;
+}
+
+a:hover {
+  color: map-get($colors, hover);
+  text-decoration: none;
+}
+
+/*
+//$mq-breakpoints
+@media screen and (max-width: map-get($mq-breakpoints, large)) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: map-get($mq-breakpoints, small)) {
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+ */

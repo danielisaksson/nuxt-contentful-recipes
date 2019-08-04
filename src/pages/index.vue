@@ -8,6 +8,7 @@
       columnWidth=".grid-sizer"
       percentPosition="true"
       v-show="showGrid"
+      gutter="80"
     >
       <div class="grid-sizer" />
       <recipe-thumbnail
@@ -18,14 +19,6 @@
         :id="recipe.id"
       />
     </div>
-
-    <!-- <div class="recipes_list">
-      <recipe-thumbnail
-        v-for="recipe in recipes"
-        :key="recipe.slug"
-        :id="recipe.id"
-      />
-    </div>-->
   </section>
 </template>
 
@@ -59,18 +52,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/css/_variables.scss';
+@import '~/assets/css/mixins.scss';
 
-.grid-sizer,
-.grid-item {
-  width: 33.33%;
-
-  @media screen and (max-width: map-get($mq-breakpoints, xlarge)) {
-    width: 50%;
-  }
-
-  @media screen and (max-width: map-get($mq-breakpoints, medium)) {
-    width: 100%;
-  }
+.grid-item,
+.grid-sizer {
+  @include masonry-column();
 }
 
 .fade {
@@ -85,7 +71,7 @@ export default {
 
 .masonry-container {
   width: 100vw;
-  max-width: map-get($mq-breakpoints, xxlarge);
-  margin: 0 auto;
+  max-width: $max-width;
+  margin: 40px auto;
 }
 </style>

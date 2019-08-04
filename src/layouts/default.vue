@@ -1,8 +1,14 @@
 <template>
   <div class="app-wrapper">
-    <header class="app-header"><app-header></app-header></header>
-    <main class="app-body"><nuxt /></main>
-    <footer class="app-footer"><app-footer /></footer>
+    <header class="app-header">
+      <app-header></app-header>
+    </header>
+    <main class="app-body">
+      <nuxt />
+    </main>
+    <footer class="app-footer">
+      <app-footer />
+    </footer>
   </div>
 </template>
 
@@ -63,6 +69,8 @@ export default {
   margin: auto;
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-header {
@@ -70,17 +78,18 @@ export default {
   top: 0px;
   width: 100%;
   z-index: 1000;
+  flex-shrink: 0;
 }
 
 .app-body {
-  min-height: calc(100vh - 146px);
+  // min-height: calc(100vh - 146px);
+  flex: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/*
 .app-footer {
+  flex-shrink: 0;
 }
-*/
 </style>
