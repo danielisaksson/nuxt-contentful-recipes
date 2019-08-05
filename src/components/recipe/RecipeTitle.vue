@@ -1,7 +1,7 @@
 <template>
   <div class="recipe__title">
     <h1>{{ title }}</h1>
-    <h3>{{ subtitle }}</h3>
+    <h2>{{ subtitle }}</h2>
   </div>
 </template>
 
@@ -18,11 +18,13 @@ export default {
 @import '~/assets/css/_variables.scss';
 
 .recipe__title {
-  position: absolute;
+  // position: absolute;
   width: 100%;
-  bottom: 5%;
+  // bottom: 5%;
   color: #fff;
   overflow: hidden;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
 
   > * {
     padding: 0px 30px;

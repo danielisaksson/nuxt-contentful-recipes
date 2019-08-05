@@ -1,7 +1,18 @@
 <template>
   <section class="wrapper">
-    <div class="recipes_list">
+    <div
+      v-masonry
+      transition-duration="0"
+      class="masonry-container"
+      itemSelector=".grid-item"
+      percentPosition="true"
+      v-show="showGrid"
+      gutter="80"
+    >
+      <!-- <div class="grid-sizer" /> -->
       <recipe-thumbnail
+        v-masonry-tile
+        class="grid-item"
         v-for="recipe in recipes"
         :key="recipe.slug"
         :id="recipe.id"
@@ -16,11 +27,18 @@ import RecipeThumbnail from '~/components/RecipeThumbnail'
 export default {
   data() {
     return {
-      recipes: []
+      recipes: [],
+      showGrid: false
     }
   },
   components: {
     RecipeThumbnail
+  },
+  mounted() {
+    if (typeof this.$redrawVueMasonry === 'function') {
+      this.$redrawVueMasonry()
+      this.showGrid = true
+    }
   },
   async asyncData({ params, store }) {
     console.log('Startpage Fetch Recipes')
@@ -33,29 +51,26 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/css/_variables.scss';
+@import '~/assets/css/mixins.scss';
 
-.recipes_list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
+.grid-item,
+.grid-sizer {
+  @include masonry-column();
+}
 
-  > * {
-    flex: 1 1 320px;
+.fade {
+  &-transition {
+    transition: opacity 3s ease-in;
+  }
+  &-enter,
+  &-leave {
+    opacity: 0;
   }
 }
 
-.wrapper {
-  position: relative;
-  max-width: map-get($mq-breakpoints, xxlarge);
-  margin: 0 auto;
-  text-align: left;
-}
-//$mq-breakpoints
-@media screen and (max-width: map-get($mq-breakpoints, xxlarge)) {
-  .wrapper {
-    margin-left: 30px;
-    margin-right: 30px;
-  }
+.masonry-container {
+  width: 100vw;
+  max-width: $max-width;
+  margin: 40px auto;
 }
 </style>

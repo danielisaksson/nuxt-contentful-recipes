@@ -1,30 +1,27 @@
-const fs = require('fs')
+import fs from 'fs'
+import path from 'path'
+import dotenv from 'dotenv'
+import contentful from 'contentful'
+dotenv.config()
+
+/* const fs = require('fs')
 const path = require('path')
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const contentful = require('contentful')
-
+ */
 console.log('Building with Live settings')
 
 module.exports = {
-  /* hooks: {
-    'generate:done': nuxt => {
-      fs.copyFileSync(
-        'netlify-buildfiles/_redirects-live',
-        path.join(nuxt.options.generate.dir, '_redirects')
-      )
-
-      fs.copyFileSync(
-        'netlify-buildfiles/_headers-live',
-        path.join(nuxt.options.generate.dir, '_headers')
-      )
-    }
-  }, */
   srcDir: 'src/',
   css: [
     // SCSS file in the project
     // '@/assets/css/main.scss'
   ],
-  plugins: ['~/plugins/Contentful', '~/plugins/InstantSearch'],
+  plugins: [
+    '~/plugins/Contentful',
+    '~/plugins/InstantSearch',
+    { src: '~/plugins/vue-masonry', ssr: false }
+  ],
   /*
    ** Headers of the page
    */
@@ -44,10 +41,8 @@ module.exports = {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700'
-        // 'https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display'
-        // Playfair+Display:400,700
-        // Actor|GFS+Didot
+        href:
+          'https://fonts.googleapis.com/css?family=Playfair+Display|Zilla+Slab:300,400,700|Noto+Serif|Zilla+Slab+Highlight'
       }
     ]
   },
@@ -61,7 +56,9 @@ module.exports = {
         return name === 'search'
       })
 
-      routes[searchRouteIndex].props = route => ({ query: route.query.q })
+      routes[searchRouteIndex].props = ({ query }) => {
+        return { query: query.q }
+      }
     }
   },
   sitemap: {
@@ -121,11 +118,11 @@ module.exports = {
   },
   generate: {
     routes: async function() {
-      const config = {
+      const client = contentful.createClient({
         space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-      }
-      const client = contentful.createClient(config)
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST
+      })
       const recipes = await client.getEntries({
         content_type: process.env.CONTENTFUL_RECIPE_TYPE,
         select: 'fields'
@@ -145,7 +142,6 @@ module.exports = {
     ALGOLIA_SEARCH_KEY: process.env.ALGOLIA_SEARCH_KEY,
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
     CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-    CONTENTFUL_PREVIEW_TOKEN: process.env.CONTENTFUL_PREVIEW_TOKEN,
     CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
     CONTENTFUL_RECIPE_TYPE: process.env.CONTENTFUL_RECIPE_TYPE
   }

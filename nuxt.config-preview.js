@@ -1,7 +1,14 @@
-const fs = require('fs')
+import fs from 'fs'
+import path from 'path'
+import dotenv from 'dotenv'
+import contentful from 'contentful'
+dotenv.config()
+
+/* const fs = require('fs')
 const path = require('path')
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const contentful = require('contentful')
+ */
 
 console.log('Building with Preview settings')
 
@@ -28,7 +35,11 @@ module.exports = {
     dir: 'dist-preview'
   },
   mode: 'spa',
-  plugins: ['~/plugins/Contentful', '~/plugins/InstantSearch'],
+  plugins: [
+    '~/plugins/Contentful',
+    '~/plugins/InstantSearch',
+    { src: '~/plugins/vue-masonry', ssr: false }
+  ],
   /*
    ** Headers of the page
    */
@@ -48,13 +59,25 @@ module.exports = {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700'
+        href:
+          'https://fonts.googleapis.com/css?family=Playfair+Display|Zilla+Slab:400,700'
       }
     ]
   },
   modules: ['@nuxtjs/markdownit', '@nuxtjs/sitemap'], //'@nuxtjs/pwa',
   markdownit: {
     injected: true
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      const searchRouteIndex = routes.findIndex(({ name }) => {
+        return name === 'search'
+      })
+
+      routes[searchRouteIndex].props = ({ query }) => {
+        return { query: query.q }
+      }
+    }
   },
   /*
    ** Customize the progress bar color
@@ -84,7 +107,6 @@ module.exports = {
     ALGOLIA_SEARCH_KEY: process.env.ALGOLIA_SEARCH_KEY,
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
     CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-    CONTENTFUL_PREVIEW_TOKEN: process.env.CONTENTFUL_PREVIEW_TOKEN,
     CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
     CONTENTFUL_RECIPE_TYPE: process.env.CONTENTFUL_RECIPE_TYPE
   }

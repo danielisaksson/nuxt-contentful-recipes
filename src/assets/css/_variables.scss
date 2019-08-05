@@ -1,7 +1,10 @@
 // Colors
-$colors: ( text: #303030, lightText: #808080, links: #292833, hover: #322833, footerBackground: #141414, footerText: #dfdfdf, body: #f5f5f5, border: #ccc, headerBackground: rgba(0, 0, 0, 1));
+$colors: (text: #282724, lightText: #808080, links:#282724, hover: #322833, footerBackground: #282724, footerText: #dfdfdf, body: #F4F3F0, border: #ccc, headerBackground: #ffffff);
 // Breakpoints
-$mq-breakpoints: ( tiny: 320px, small: 450px, medium: 525px, large: 667px, xlarge: 960px, xxlarge: 1400px);
+$mq-breakpoints: (tiny: 320px, small: 450px, medium: 525px, large: 667px, xlarge: 960px, xxlarge: 1400px);
 // Sizes
-$sizes: (headerHeight: 40px, footerHeight: 100px, bottomPadding: 80px);
-$colourData: ( alt1: #a41b36, alt2: #a47c5b, alt3: #d6c2bd, alt4: #5c4838, alt5: #d4766f, alt6: #724129);
+$sizes: (headerHeight: 50px, footerHeight: 100px, bottomPadding: 80px);
+$colourData: (alt1: #a41b36, alt2: #a47c5b, alt3: #d6c2bd, alt4: #5c4838, alt5: #d4766f, alt6: #724129);
+
+$max-width: 1200px;
+$masonry-gutter-width: 80px;
