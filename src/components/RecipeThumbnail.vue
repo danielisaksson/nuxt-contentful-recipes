@@ -82,7 +82,7 @@ export default {
 .recipe-thumbnail {
   &_wrapper {
     max-width: 520px;
-    width: 100%;
+    // width: 100%;
     overflow-wrap: break-word;
     margin: 2px 0;
 
@@ -104,11 +104,11 @@ export default {
     }
   }
 
-  &_card {
+  /* &_card {
     // background-color: white;
     // padding: 5px;
     // border: 1px solid #dddddd;
-  }
+  } */
 
   &_image {
     width: 100%;

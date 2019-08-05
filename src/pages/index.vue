@@ -5,12 +5,11 @@
       transition-duration="0"
       class="masonry-container"
       itemSelector=".grid-item"
-      columnWidth=".grid-sizer"
       percentPosition="true"
       v-show="showGrid"
       gutter="80"
     >
-      <div class="grid-sizer" />
+      <!-- <div class="grid-sizer" /> -->
       <recipe-thumbnail
         v-masonry-tile
         class="grid-item"
