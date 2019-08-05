@@ -82,11 +82,9 @@ export default {
 }
 
 .app-body {
-  // min-height: calc(100vh - 146px);
   flex: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .app-footer {
