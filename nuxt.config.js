@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import dotenv from 'dotenv'
-import contentful from 'contentful'
+import * as contentful from 'contentful'
 dotenv.config()
 
 /* const fs = require('fs')
@@ -65,17 +65,7 @@ module.exports = {
     path: '/sitemap.xml',
     hostname: 'https://recept.coko.se',
     cacheTime: 1000 * 60 * 15,
-    gzip: true,
-    generate: true // Enable me when using nuxt generate
-    // routes: [
-    //   '/page/1',
-    //   {
-    //     url: '/page/2',
-    //     changefreq: 'daily',
-    //     priority: 1,
-    //     lastmodISO: '2017-06-30T13:30:00.000Z'
-    //   }
-    // ]
+    gzip: true
   },
   /* workbox: {
     runtimeCaching: [

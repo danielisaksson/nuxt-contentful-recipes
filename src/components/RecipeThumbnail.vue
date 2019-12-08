@@ -61,9 +61,7 @@ export default {
     },
     recipeImageUrl: function() {
       return this.recipe.images
-        ? `${
-            this.recipe.images[0].fields.file.url
-          }?w=456&fit=fill&fm=jpg&q=60&fl=progressive`
+        ? `${this.recipe.images[0].fields.file.url}?w=456&fit=fill&fm=jpg&q=60&fl=progressive`
         : 'https://picsum.photos/456/256/?image=2'
     } /* ,
     ...mapState({

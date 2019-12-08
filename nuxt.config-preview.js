@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import dotenv from 'dotenv'
-import contentful from 'contentful'
+import * as contentful from 'contentful'
 dotenv.config()
 
 /* const fs = require('fs')
@@ -64,7 +64,7 @@ module.exports = {
       }
     ]
   },
-  modules: ['@nuxtjs/markdownit', '@nuxtjs/sitemap'], //'@nuxtjs/pwa',
+  modules: ['@nuxtjs/markdownit'],
   markdownit: {
     injected: true
   },

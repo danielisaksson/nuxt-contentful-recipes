@@ -73,9 +73,7 @@ export default {
     getHeaderImage: function() {
       const index = Math.floor(Math.random() * 1084)
       return this.recipe && this.recipe.images
-        ? `${
-            this.recipe.images[0].fields.file.url
-          }?w=1400&h=933&fit=fill&fm=jpg&q=70&fl=progressive`
+        ? `${this.recipe.images[0].fields.file.url}?w=1400&h=933&fit=fill&fm=jpg&q=70&fl=progressive`
         : `https://picsum.photos/1920/800/?image=${index}`
     }
   }
