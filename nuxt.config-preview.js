@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import dotenv from 'dotenv'
+import * as contentful from 'contentful'
 import contentful from 'contentful'
 dotenv.config()
 
