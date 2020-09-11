@@ -16,3 +16,8 @@ dist-preview
 
 # PWA module Service workers
 sw.*
+
+.DS_Store
+
+# Local Netlify folder
+.netlify
