@@ -26,7 +26,7 @@
     "contentful": "^7.10.0",
     "dotenv": "^8.2.0",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.10.2",
+    "nuxt": "^2.14.5",
     "vue-carousel": "^0.18.0",
     "vue-instantsearch": "^1.7.0",
     "vue-masonry": "^0.11.8",
