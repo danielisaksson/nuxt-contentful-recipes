@@ -13,6 +13,7 @@ const contentful = require('contentful')
 console.log('Building with Preview settings')
 
 module.exports = {
+  target: 'static',
   hooks: {
     'generate:done': nuxt => {
       fs.copyFileSync(
@@ -34,7 +35,7 @@ module.exports = {
   generate: {
     dir: 'dist-preview'
   },
-  mode: 'spa',
+  ssr: false,
   plugins: [
     '~/plugins/Contentful',
     '~/plugins/InstantSearch',
