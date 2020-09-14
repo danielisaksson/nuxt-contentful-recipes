@@ -12,6 +12,7 @@ const contentful = require('contentful')
 console.log('Building with Live settings')
 
 module.exports = {
+  target: 'static',
   srcDir: 'src/',
   css: [
     // SCSS file in the project
