@@ -67,7 +67,12 @@ module.exports = {
     hostname: 'https://recept.coko.se',
     cacheTime: 1000 * 60 * 15,
     gzip: true,
-    exclude: ['/styleguide', '/search']
+    exclude: ['/styleguide', '/search'],
+    defaults: {
+      changefreq: 'daily',
+      priority: 1,
+      lastmod: new Date()
+    }
   },
   /* workbox: {
     runtimeCaching: [
