@@ -66,7 +66,8 @@ module.exports = {
     path: '/sitemap.xml',
     hostname: 'https://recept.coko.se',
     cacheTime: 1000 * 60 * 15,
-    gzip: true
+    gzip: true,
+    exclude: ['/styleguide', '/search']
   },
   /* workbox: {
     runtimeCaching: [

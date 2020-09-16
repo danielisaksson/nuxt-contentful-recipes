@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@nuxtjs/markdownit": "^1.2.7",
-    "@nuxtjs/sitemap": "^2.0.1",
+    "@nuxtjs/sitemap": "^2.4.0",
     "ajv": "^6.10.2",
     "contentful": "^7.10.0",
     "dotenv": "^8.2.0",
